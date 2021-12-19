@@ -27,12 +27,12 @@ function getContriesRegions() {
 
 
 function details(id) {
-    url = `http://127.0.0.1:5500/details.html?country=${id}`;
+    url = `https://ramonalvesmodesto.github.io/countries-world/?country=${id}`;
     document.location.href = url;
 }
 
 function getListCountriesRegions(id) {
-    var url = `http://127.0.0.1:5500/index.html?region=${id}`;
+    var url = `https://ramonalvesmodesto.github.io/countries-world/?region=${id}`;
     document.location.href = url;
 
     getContriesRegions();
