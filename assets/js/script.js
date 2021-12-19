@@ -31,7 +31,7 @@ function details(id) {
 }
 
 function getListCountriesRegions(id) {
-    var getUrl = _url.replace("/countries-world/", "/countries-world/index.html");
+    var getUrl = url.replace("/countries-world/", "/countries-world/index.html");
 
     var _url = `${getUrl}?region=${id}`;
     document.location.href = _url;
