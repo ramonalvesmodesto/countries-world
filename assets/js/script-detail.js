@@ -101,7 +101,7 @@ function listBordersCountries(list) {
         document.querySelector(".borders").innerHTML +=
             `
             <li>
-                <a href="/index.html">Não encontrado</a>
+                <a href="/countries-world/index.html">Não encontrado</a>
             </li>
             `
     } else {

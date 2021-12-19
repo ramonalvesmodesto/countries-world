@@ -1,3 +1,6 @@
+var dark = document.querySelector(".icon");
+dark.addEventListener("click", lightMode);
+
 function lightMode() {
     if (document.querySelector(".icon span").textContent == "Dark Mode") {
         document.querySelector(".icon span").textContent = "Ligth Mode";

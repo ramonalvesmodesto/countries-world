@@ -20,9 +20,6 @@ ul.addEventListener("click", function (event) {
     getListCountriesRegions(target.getAttribute("id"));
 });
 
-var dark = document.querySelector(".icon");
-dark.addEventListener("click", lightMode);
-
 const url = "https://ramonalvesmodesto.github.io/countries-world/";
 
 function details(id) {
