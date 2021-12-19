@@ -119,7 +119,7 @@ function showCountries(arrListCountries) {
 
 function showCountry(country) {
     document.querySelector(".load").style.display = "block";
-    document.querySelector(".detail-country").innerHTML =
+    document.querySelector(".detail-country").innerHTML +=
         `
     <a href="../../index.html" class="back-home back-hover">
         <i class="fas fa-arrow-left"></i>
