@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    color: rgb(58, 58, 58);
+    text-decoration: none;
+}
+
+.wrapper {
+    width: 85%;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #FAFAFA;
+    font-size: 14px;
+}
+
+/* div header */
+#head {
+    width: 100%;
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#title {
+    width: 300px;
+}
+
+.icon span:hover {
+    color: #999;
+    cursor: pointer;
+}
+
+.icon span {
+    font-size: 16px;
+    font-weight: 650;
+}
+
+.icon span, .fa-moon {
+    color: #555;
+}
+
+#title, .icon {
+    z-index: 1;
+}
+
+.back {
+    width: 100%;
+    height: 85px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: #FFF;
+    box-shadow:1px 1px 5px rgba(153, 153, 153, 0.254);
+    z-index: 0;
+}
+
+
+/* div main */
+.main {
+    background-color: #FAFAFA;
+}
+
+/* Inputs */
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 200px;
+    position: relative;
+}
+
+button#filter {
+    width: 100%;
+    padding: 20px 20px 20px 40px;
+    color: #888;
+    background-color: #FFF;
+    text-align: left;
+    font-size: 13px;
+    margin-bottom: 1px;
+}
+
+.div-filter {
+    width: 200px;
+    position: relative;
+}
+
+.div-filter .fa-chevron-up {
+    color: rgb(170, 169, 169);
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.div-filter .fa-chevron-down {
+    color: rgb(170, 169, 169);
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.div-search {
+    position: relative;
+}
+
+#search, #filter {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    border-radius: 5px;
+    padding: 20px 30px;
+   
+}
+
+#search {
+    width: 500px;
+    padding-left: 60px;
+}
+
+.div-search .fa-search {
+    color: rgb(170, 169, 169);
+    position: absolute;
+    line-height: 57px;
+    left: 28px;
+    cursor: pointer;
+}
+
+.fa-search:hover {
+    color: #777;
+}
+
+#filter {
+    width: 130px;
+}   
+
+.list-region {
+    list-style: none;
+    background-color: #FFF;
+    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    border-radius: 5px;
+    margin-top: 2px;
+    color: #666;
+    display: none;
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.list-region li {
+    padding: 5px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.list-region li:hover {
+    background-color: #FAFAFA;
+}
+
+.list-region li a {
+    text-decoration: none;
+    color: #666;
+    display: block;
+    padding: 5px 30px;
+}
+
+/* countries */
+
+/* list-countries */
+.list-countries {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* box-contries */
+.box-country {
+    width: 300px;
+    height: 360px;
+    background-color: #FFF;
+    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.box-country img {
+    width: 300px;
+    height: 190px;
+    border-radius: 5px;
+}
+
+.box-country .content {
+    margin: 20px;
+}
+
+.box-country .content h4 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.list-information {
+    list-style: none;
+}
+
+.list-information li {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.list-information li .key, .border-countries p {
+    font-weight: 700;
+}
+
+.list-information li .value {
+    margin-left: 3px;
+}
+
+.load {
+    width: 100%;
+    height: 70vh;
+    text-align: center;
+    background-color: #FAFAFA;
+    z-index: 999;
+}
+
+.load img {
+    width: 200px;
+    height: 200px;
+}
+
+@media screen and (max-width: 839px) {
+    #search {
+        width: 100%;
+        padding-left: 60px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .box {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    p, a {
+        font-size: .9em;
+    }
+
+    #title {
+        position: absolute;
+    }
+
+    .icon span {
+        font-size: 1em;
+    }
+
+    .icon {
+        position: absolute;
+        right: 10%;
+    }
+}
+
+@media screen and (max-width: 328px) {
+    .icon span {
+        font-size: 1em;
+    }
+
+    .icon, #title {
+        position: relative;
+        left: 0;
+    }
+
+    .icon {
+        margin-bottom: 10px;
+    }
+
+    .box-country {
+        width: 100%;
+    }
+    
+    .box-country img {
+        width: 100%;
+    }
+
+}

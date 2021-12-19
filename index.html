@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/8ad07c6848.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header id="head">
+                <h1 id="title">Países do mundo</h1>
+                <div class="icon">
+                    <i class="far fa-moon"></i>
+                    <span>Dark Mode</span>
+                </div>
+                <div class="back"></div>
+            </header>
+
+            <div class="inputs">
+                <div class="div-search">
+                    <i class="fas fa-search"></i>
+                    <input type="search" name="search" id="search" placeholder="Encontre um país...">
+                </div>
+
+                <div class="div-filter">
+                    <button id="filter">Filtre por Região <i class="fas fa-chevron-up"></i></button>
+
+                    <ul class="list-region">
+                        <li><a id="all">Todos</a></li>
+                        <li><a id="africa">África</a></li>
+                        <li><a id="america">América</a></li>
+                        <li><a id="asia">Ásia</a></li>
+                        <li><a id="europe">Europa</a></li>
+                        <li><a id="oceania">Oceania</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="load">
+                <img src="assets/preloader/Ellipsis-1s-283px.gif" alt="">
+            </div>
+            <main class="main">
+                <div class="list-countries"></div>
+            </main>
+        </div>
+
+        <script type="text/javascript" src="assets/js/script.js"></script>
+    </body>
+</html>
