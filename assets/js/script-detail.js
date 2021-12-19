@@ -65,7 +65,7 @@ function showCountry(country) {
             </div>
 
             <div class="border-countries">
-                <p>Border Countries: </p>
+                <p>Países Vizinhos: </p>
                 <ul class="list-information borders">
                     
                 </ul>
