@@ -87,7 +87,7 @@ function showCountries(arrListCountries) {
     for (const country of arrListCountries) {
         document.querySelector(".list-countries").innerHTML +=
             `
-            <a class="box" id="${country.name.common.toLowerCase()}" onclick="details(this.id)">
+            <a href="details.html" class="box" id="${country.name.common.toLowerCase()}" onclick="details(this.id)">
                 <div class="box-country">
                     <img src="${country.flags.svg}" alt="" class="flag">
             
