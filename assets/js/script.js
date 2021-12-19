@@ -23,23 +23,18 @@ ul.addEventListener("click", function (event) {
 var dark = document.querySelector(".icon");
 dark.addEventListener("click", lightMode);
 
+const url = "https://ramonalvesmodesto.github.io/countries-world/";
 
 function details(id) {
-    var getUrl = document.location.href.toString();
-    getUrl = getUrl.replace(getUrl.substring(getUrl.length, getUrl.indexOf("?")), "");
-    getUrl = getUrl.replace("/index.html", "");
-
-    var url = `${getUrl}/countries-world/details.html?country=${id}`;
-    document.location.href = url;
+    var _url = `${url}details.html?country=${id}`;
+    document.location.href = _url;
 }
 
 function getListCountriesRegions(id) {
-    var getUrl = document.location.href.toString();
-    getUrl = getUrl.replace(getUrl.substring(getUrl.length, getUrl.indexOf("?")), "");
-    getUrl = getUrl.replace("/countries-world/", "/countries-world/index.html");
+    var getUrl = getUrl.replace("/countries-world/", "/countries-world/index.html");
 
-    var url = `${getUrl}?region=${id}`;
-    document.location.href = url;
+    var _url = `${url}?region=${id}`;
+    document.location.href = _url;
 
     responseApi();
 }
@@ -101,28 +96,5 @@ function subStringIgual(string1, string2) {
     }
 
     return "";
-}
-
-function lightMode() {
-    if (document.querySelector(".icon span").textContent == "Dark Mode") {
-        document.querySelector(".icon span").textContent = "Ligth Mode";
-        document.querySelector(".fa-moon").style.fontWeight = "900";
-        document.documentElement.style.setProperty("--background", "#202D36");
-        document.documentElement.style.setProperty("--background-element", "#2B3743");
-        document.documentElement.style.setProperty("--general-font", "#D1D1D1");
-        document.documentElement.style.setProperty("--icon", "#D1D1D1");
-        document.documentElement.style.setProperty("--shadow", "#1515155d");
-        document.documentElement.style.setProperty("--color-white", "#2B3743");
-    } else {
-        document.querySelector(".icon span").textContent = "Dark Mode";
-        document.querySelector(".fa-moon").style.fontWeight = "400";
-        document.documentElement.style.setProperty("--background", "#FAFAFA");
-        document.documentElement.style.setProperty("--background-element", "#FFF");
-        document.documentElement.style.setProperty("--general-font", "rgb(58, 58, 58)");
-        document.documentElement.style.setProperty("--icon", "#555");
-        document.documentElement.style.setProperty("--shadow", "rgba(153, 153, 153, 0.254)");
-        document.documentElement.style.setProperty("--color-white", "#FFF");
-    }
-
 }
 
