@@ -32,7 +32,7 @@ Os usuários devem ser capazes de:
 
 ### O que aprendi 
 
-Nesse desafio aprendi como melhorar o desempenho e evitar travamentos de páginas web usando o Web Worker, afazer um filtro de informações digitadas pelo usuário e exibir os seus dados no site criado. Também aprendi como passar informações de uma página a outra usnado query string.
+Nesse desafio aprendi como melhorar o desempenho e evitar travamentos de páginas web usando o Web Worker, a fazer um filtro de informações digitadas pelo usuário e exibir os dados filtrados no site. Também aprendi como passar informações de uma página a outra usando query string.
 
 API: [REST COUNTRIES](https://restcountries.com/)
 
