@@ -27,12 +27,12 @@ function getContriesRegions() {
 
 
 function details(id) {
-    url = `http://127.0.0.1:5500/details.html?country=${id}`;
+    url = `https://ramonalvesmodesto.github.io/countries-world/?country=${id}`;
     document.location.href = url;
 }
 
 function getListCountriesRegions(id) {
-    var url = `http://127.0.0.1:5500/index.html?region=${id}`;
+    var url = `https://ramonalvesmodesto.github.io/countries-world/?region=${id}`;
     document.location.href = url;
 
     getContriesRegions();
@@ -82,7 +82,7 @@ function getResponseCountries() {
 }
 
 function showCountries(arrListCountries) {
-    load("list-countries", "flex");
+    document.querySelector(".load").style.display = "block";
 
     for (const country of arrListCountries) {
         document.querySelector(".list-countries").innerHTML +=
@@ -114,11 +114,11 @@ function showCountries(arrListCountries) {
         `;
     }
 
-    load("list-countries", "flex");
+    document.querySelector(".load").style.display = "none";
 }
 
 function showCountry(country) {
-    load("detail-country", "block");
+    document.querySelector(".load").style.display = "block";
     document.querySelector(".detail-country").innerHTML =
         `
     <a href="../../index.html" class="back-home back-hover">
@@ -182,22 +182,10 @@ function showCountry(country) {
         </div>
     </div>
     `;
-    load("detail-country", "block");
+    document.querySelector(".load").style.display = "none";
 
 }
 
-function load(string1, string2) {
-    var div = document.querySelector(`.${string1}`);
-    var load = document.querySelector(".load");
-
-    if (load.style.display == "none") {
-        load.style.display = "none";
-        div.style.display = string2;
-    } else {
-        load.style.display = "none";
-        div.style.display = string2;
-    }
-}
 
 function itarableObj(obj) {
     let value = "";
