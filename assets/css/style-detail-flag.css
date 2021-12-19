@@ -41,13 +41,17 @@
     padding: 8px;
     border: none;
     background-color: var(--color-white);
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    box-shadow: 0 0 5px var(--shadow);
     font-weight: 700;
 }
 
 .border-countries  a:hover, .back-home:hover {
     background-color: var(--color-blue-hover);
     color: var(--color-white);
+}
+
+.detail-country {
+    padding-bottom: 50px;
 }
 
 .detail-country .fa-arrow-left {
@@ -77,8 +81,18 @@
     cursor: pointer;
     border: none;
     background-color: var(--color-white);
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    box-shadow: 0 0 5px var(--shadow);
     font-weight: 700;
+}
+
+.borders {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.borders li {
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 866px) {

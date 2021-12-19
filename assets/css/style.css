@@ -1,9 +1,23 @@
+:root {
+    --background: #FAFAFA;
+    --general-font: rgb(58, 58, 58);
+    --background-element: #FFF;
+    --hover: #999;
+    --btn-filter: #888;
+    --shadow: rgba(153, 153, 153, 0.254);
+    --icon: #555;
+}
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Nunito', sans-serif;
-    color: rgb(58, 58, 58);
+    color: var(--general-font);
     text-decoration: none;
+}
+
+a {
+    cursor: pointer;
 }
 
 .wrapper {
@@ -13,7 +27,7 @@
 }
 
 body {
-    background-color: #FAFAFA;
+    background-color: var(--background);
     font-size: 14px;
 }
 
@@ -32,7 +46,7 @@ body {
 }
 
 .icon span:hover {
-    color: #999;
+    color: var(--hover);
     cursor: pointer;
 }
 
@@ -42,7 +56,7 @@ body {
 }
 
 .icon span, .fa-moon {
-    color: #555;
+    color: var(--icon);
 }
 
 #title, .icon {
@@ -55,15 +69,15 @@ body {
     position: absolute;
     right: 0;
     left: 0;
-    background-color: #FFF;
-    box-shadow:1px 1px 5px rgba(153, 153, 153, 0.254);
+    background-color: var(--background-element);
+    box-shadow:1px 1px 5px var(--shadow);
     z-index: 0;
 }
 
 
 /* div main */
 .main {
-    background-color: #FAFAFA;
+    background-color: var(--background);
 }
 
 /* Inputs */
@@ -79,8 +93,8 @@ body {
 button#filter {
     width: 100%;
     padding: 20px 20px 20px 40px;
-    color: #888;
-    background-color: #FFF;
+    color: var(--btn-filter);
+    background-color: var(--background-element);
     text-align: left;
     font-size: 13px;
     margin-bottom: 1px;
@@ -91,14 +105,8 @@ button#filter {
     position: relative;
 }
 
-.div-filter .fa-chevron-up {
-    color: rgb(170, 169, 169);
-    cursor: pointer;
-    margin-left: 20px;
-}
-
-.div-filter .fa-chevron-down {
-    color: rgb(170, 169, 169);
+.div-filter .fa-chevron-up, .div-filter .fa-chevron-down {
+    color: var(--btn-filter);
     cursor: pointer;
     margin-left: 20px;
 }
@@ -110,7 +118,7 @@ button#filter {
 #search, #filter {
     outline: none;
     border: none;
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    box-shadow: 0 0 5px var(--shadow);
     border-radius: 5px;
     padding: 20px 30px;
    
@@ -119,10 +127,11 @@ button#filter {
 #search {
     width: 500px;
     padding-left: 60px;
+    background-color: var(--background-element);
 }
 
 .div-search .fa-search {
-    color: rgb(170, 169, 169);
+    color: var(--btn-filter);
     position: absolute;
     line-height: 57px;
     left: 28px;
@@ -130,20 +139,20 @@ button#filter {
 }
 
 .fa-search:hover {
-    color: #777;
+    color: var(--hover);
 }
 
 #filter {
     width: 130px;
+    position: relative;
 }   
 
 .list-region {
     list-style: none;
-    background-color: #FFF;
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    background-color: var(--background-element);
+    box-shadow: 0 0 5px var(--shadow);
     border-radius: 5px;
     margin-top: 2px;
-    color: #666;
     display: none;
     position: absolute;
     right: 0;
@@ -157,12 +166,11 @@ button#filter {
 }
 
 .list-region li:hover {
-    background-color: #FAFAFA;
+    background-color: var(--background);
 }
 
 .list-region li a {
     text-decoration: none;
-    color: #666;
     display: block;
     padding: 5px 30px;
 }
@@ -180,8 +188,8 @@ button#filter {
 .box-country {
     width: 300px;
     height: 360px;
-    background-color: #FFF;
-    box-shadow: 0 0 5px rgba(153, 153, 153, 0.254);
+    background-color: var(--background-element);
+    box-shadow: 0 0 5px var(--shadow);
     margin-bottom: 50px;
     border-radius: 5px;
 }
@@ -222,7 +230,7 @@ button#filter {
     width: 100%;
     height: 70vh;
     text-align: center;
-    background-color: #FAFAFA;
+    background-color: var(--background);
     z-index: 999;
 }
 
@@ -244,12 +252,21 @@ button#filter {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 1 1 9px;
+    }
+
+    .box-country {
+        flex: 200px 200px 200px;
     }
 }
 
 @media screen and (max-width: 600px) {
     h1 {
         font-size: 1.3em;
+    }
+
+    #title h1 {
+        font-size: 1.5em;
     }
 
     p, a {
@@ -267,6 +284,16 @@ button#filter {
     .icon {
         position: absolute;
         right: 10%;
+    }
+
+    .div-search, .div-filter, .inputs {
+        width: 100%;
+    }
+
+    .div-filter .fa-chevron-up, .div-filter .fa-chevron-down {
+        position: absolute;
+        right: 50px;
+        top: 23px;
     }
 }
 

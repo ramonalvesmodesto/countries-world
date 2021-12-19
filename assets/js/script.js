@@ -1,41 +1,47 @@
 let arrListCountries = [];
 
-if (arrListCountries.length > 0) {
-    showCountries(arrListCountries);
-} else if (document.getElementById("details") == null) {
-    getListCountries();
-} else {
-    getCountry()
+responseApi((data) => {
+    const countries = data;
+    arrListCountries = countries;
 
-}
+    showCountries(countries);
 
+});
 
-// Functions
+var input = document.querySelector("#filter");
+input.addEventListener("click", showFilterRegion);
 
-function getListCountries() {
-    getResponseCountries();
-}
+var input = document.getElementById("search");
+input.addEventListener("keyup", findCountry);
 
+var ul = document.querySelector(".list-region");
+ul.addEventListener("click", function (event) {
+    var target = event.target;
+    getListCountriesRegions(target.getAttribute("id"));
+});
 
-function getCountry() {
-    getResponseCountries();
-}
-
-function getContriesRegions() {
-    getResponseCountries();
-}
+var dark = document.querySelector(".icon");
+dark.addEventListener("click", lightMode);
 
 
 function details(id) {
-    url = `https://ramonalvesmodesto.github.io/countries-world/details.html?country=${id}`;
+    var getUrl = document.location.href.toString();
+    getUrl = getUrl.replace(getUrl.substring(getUrl.length, getUrl.indexOf("?")), "");
+    getUrl = getUrl.replace("/index.html", "");
+
+    var url = `${getUrl}/details.html?country=${id}`;
     document.location.href = url;
 }
 
 function getListCountriesRegions(id) {
-    var url = `https://ramonalvesmodesto.github.io/countries-world/?region=${id}`;
+    var getUrl = document.location.href.toString();
+    getUrl = getUrl.replace(getUrl.substring(getUrl.length, getUrl.indexOf("?")), "");
+    getUrl = getUrl.replace("/countries-world/", "/countries-world/index.html");
+
+    var url = `${getUrl}?region=${id}`;
     document.location.href = url;
 
-    getContriesRegions();
+    responseApi();
 }
 
 function showFilterRegion() {
@@ -50,172 +56,38 @@ function showFilterRegion() {
     }
 }
 
-function getResponseCountries() {
-    const gcountry = async (callback) => {
-        let response;
-
-        if(window.location.search == "" || window.location.search == "?region=all") {
-            response = await fetch("https://restcountries.com/v3.1/all");
-        } else if(window.location.search == "?region=africa" || window.location.search == "?region=asia" || window.location.search == "?region=america" || window.location.search == "?region=europe" || window.location.search == "?region=oceania") {
-            response = await fetch(`https://restcountries.com/v3.1/region/${window.location.search.split("=")[1]}`);
-        } else {
-            response = await fetch(`https://restcountries.com/v3.1/name/${window.location.search.split("=")[1]}?fullText=true`);
-        }
-
-        const json = await response.json();
-        
-        callback(json);
-    }
-
-    gcountry((data) => {
-        const countries = data;
-        arrListCountries = countries;
-
-        if (countries.length == 1) {
-            showCountry(countries);
-        } else {
-            showCountries(countries);
-        }
-    });
-
-
-}
-
 function showCountries(arrListCountries) {
-    document.querySelector(".load").style.display = "block";
+    load("start");
 
-    for (const country of arrListCountries) {
-        document.querySelector(".list-countries").innerHTML +=
-            `
-            <a class="box" id="${country.name.common.toLowerCase()}" onclick="details(this.id)">
-                <div class="box-country">
-                    <img src="${country.flags.svg}" alt="" class="flag">
-            
-                    <div class="content">
-                        <h4>${country.translations.por.common}</h4>
+    if(window.Worker) {
+        const worker = new Worker("assets/js/script-worker-list-countries.js");
 
-                        <ul class="list-information">
-                            <li>
-                                <p class="key">População: </p>
-                                <p class="value">${country.population}</p>
-                            </li>
-                            <li>
-                                <p class="key">Região: </p>
-                                <p class="value">${country.region}</p>
-                            </li>
-                            <li>
-                                <p class="key">Capital: </p>
-                                <p class="value">${country.capital}</p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </a>
-        `;
+        worker.postMessage(arrListCountries);
+
+        worker.onmessage = (e) => {
+            document.querySelector(".list-countries").innerHTML = e.data;
+        }
     }
 
-    document.querySelector(".load").style.display = "none";
-}
-
-function showCountry(country) {
-    document.querySelector(".load").style.display = "block";
-    document.querySelector(".detail-country").innerHTML +=
-        `
-    <a href="../../index.html" class="back-home back-hover">
-        <i class="fas fa-arrow-left"></i>
-        Voltar
-    </a>
-
-    <div class="flag">
-        <img src="${country[0].flags.svg}" alt="">
-
-        <div class="informations">
-            <h1>${country[0].translations.por.common}</h1>
-            <div class="region-information">
-                <ul class="list-information">
-                    <li>
-                        <p class="key">Nome Nativo: </p>
-                        <p class="value">${country[0].translations.por.common}</p>
-                    </li>
-                    <li> 
-                        <p class="key">População: </p>
-                        <p class="value">${country[0].population}</p>
-                    </li>
-                    <li> 
-                        <p class="key">Região: </p>
-                        <p class="value">${country[0].region}</p>
-                    </li>
-                    <li>
-                        <p class="key">Sub Região: </p>
-                        <p class="value">${country[0].subregion}</p>
-                    </li>
-                    <li>
-                        <p class="key">Capital: </p>
-                        <p class="value">${country[0].capital}</p>
-                    </li>
-                </ul>
-
-                <ul class="list-information">
-                    <li>
-                        <p class="key">Domínio:</p>
-                        <p class="value">${itarableObj(country[0].demonyms)}</p>
-                    </li>
-                    <li> 
-                        <p class="key">Moeda: </p>
-                        <p class="value">${itarableObj(country[0].currencies)}</p>
-                    </li>
-                    <li> 
-                        <p class="key">Idiomas:</p>
-                        <p class="value">${itarableObj(country[0].languages)}</p>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="border-countries">
-                <p>Border Countries: </p>
-                <ul class="list-information">
-                    <li>
-                        <a href="#">Colocar aqui</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    `;
-    document.querySelector(".load").style.display = "none";
-
-}
-
-
-function itarableObj(obj) {
-    let value = "";
-    Object.entries(obj).map(entry => {
-        if (typeof entry[1] === "object") {
-            Object.entries(entry[1]).map(entry1 => {
-                value += entry1[1].toString() + ", ";
-            });
-        } else {
-            value += entry[1].toString() + ", ";
-        }
-
-    });
-
-    return value.substring(value.length - 2, 0);
+    load("stop");
 }
 
 function findCountry() {
     let arr = [];
-    setTimeout(() => {
+    document.querySelector(".main").removeChild(document.querySelector(".list-countries"));
+    document.querySelector(".main").innerHTML = `<div class="list-countries"></div>`;
+    load("start");
+
+    setTimeout(function () {
         for (const iterator of arrListCountries) {
             if (subStringIgual(input.value, iterator.translations.por.common) != "") {
                 arr.push(iterator);
             }
         }
 
-        document.querySelector(".main").removeChild(document.querySelector(".list-countries"));
-        document.querySelector(".main").innerHTML = `<div class="list-countries"></div>`;
         showCountries(arr);
-    }, 0);
+        load("stop");
+    }, 1000);
 }
 
 function subStringIgual(string1, string2) {
@@ -231,25 +103,26 @@ function subStringIgual(string1, string2) {
     return "";
 }
 
-// Event Listeners
-
-var input = document.querySelector("#filter");
-input.addEventListener("click", showFilterRegion);
-
-var input = document.getElementById("search");
-input.addEventListener("keyup", findCountry);
-
-
-var ul = document.querySelector(".list-region");
-ul.addEventListener("click", function (event) {
-    var target = event.target;
-    getListCountriesRegions(target.getAttribute("id"));
-});
-
-var dark = document.querySelector(".icon");
-dark.addEventListener("click", lightMode);
-
 function lightMode() {
-    alert("aqui")
+    if (document.querySelector(".icon span").textContent == "Dark Mode") {
+        document.querySelector(".icon span").textContent = "Ligth Mode";
+        document.querySelector(".fa-moon").style.fontWeight = "900";
+        document.documentElement.style.setProperty("--background", "#202D36");
+        document.documentElement.style.setProperty("--background-element", "#2B3743");
+        document.documentElement.style.setProperty("--general-font", "#D1D1D1");
+        document.documentElement.style.setProperty("--icon", "#D1D1D1");
+        document.documentElement.style.setProperty("--shadow", "#1515155d");
+        document.documentElement.style.setProperty("--color-white", "#2B3743");
+    } else {
+        document.querySelector(".icon span").textContent = "Dark Mode";
+        document.querySelector(".fa-moon").style.fontWeight = "400";
+        document.documentElement.style.setProperty("--background", "#FAFAFA");
+        document.documentElement.style.setProperty("--background-element", "#FFF");
+        document.documentElement.style.setProperty("--general-font", "rgb(58, 58, 58)");
+        document.documentElement.style.setProperty("--icon", "#555");
+        document.documentElement.style.setProperty("--shadow", "rgba(153, 153, 153, 0.254)");
+        document.documentElement.style.setProperty("--color-white", "#FFF");
+    }
+
 }
 
