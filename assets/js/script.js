@@ -27,7 +27,7 @@ function getContriesRegions() {
 
 
 function details(id) {
-    url = `https://ramonalvesmodesto.github.io/countries-world/?country=${id}`;
+    url = `https://ramonalvesmodesto.github.io/countries-world/details.html?country=${id}`;
     document.location.href = url;
 }
 
