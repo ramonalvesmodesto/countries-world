@@ -14,7 +14,7 @@ function showCountry(country) {
     load("start");
     document.querySelector(".detail-country").innerHTML +=
         `
-    <a href="/index.html" class="back-home back-hover">
+    <a href="/countries-world/index.html" class="back-home back-hover">
         <i class="fas fa-arrow-left"></i>
         Voltar
     </a>

@@ -29,7 +29,7 @@ function details(id) {
     getUrl = getUrl.replace(getUrl.substring(getUrl.length, getUrl.indexOf("?")), "");
     getUrl = getUrl.replace("/index.html", "");
 
-    var url = `${getUrl}/details.html?country=${id}`;
+    var url = `${getUrl}/countries-world/details.html?country=${id}`;
     document.location.href = url;
 }
 
