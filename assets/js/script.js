@@ -20,10 +20,11 @@ ul.addEventListener("click", function (event) {
     getListCountriesRegions(target.getAttribute("id"));
 });
 
-const url = "https://ramonalvesmodesto.github.io/countries-world/";
+const url = "https://ramonalvesmodesto.github.io/countries-world/index.html";
 
 function details(id) {
-    var _url = `${url}details.html?country=${id}`;
+    var getUrl = url.replace("index.html", "");
+    var _url = `${getUrl}details.html?country=${id}`;
     document.location.href = _url;
 }
 
@@ -36,7 +37,7 @@ function getListCountriesRegions(id) {
     responseApi();
 }
 
-function showFilterRegion() {
+function showFilterRegion(event) {
     var ul = document.querySelector(".list-region");
 
     if (ul.style.display === "block") {
@@ -46,6 +47,15 @@ function showFilterRegion() {
         ul.style.display = "block"
         document.querySelector(".fa-chevron-up").className = "fa fa-chevron-down";
     }
+
+    window.addEventListener("click", () => {
+        if (ul.style.display === "block") {
+            ul.style.display = "none";
+            document.querySelector(".fa-chevron-down").className = "fa fa-chevron-up";
+        }
+    });
+
+    event.stopPropagation();
 }
 
 function showCountries(arrListCountries) {
