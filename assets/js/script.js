@@ -29,7 +29,7 @@ function details(id) {
 }
 
 function getListCountriesRegions(id) {
-    var _url = `${getUrl}?region=${id}`;
+    var _url = `${url}?region=${id}`;
     document.location.href = _url;
 
     responseApi();
