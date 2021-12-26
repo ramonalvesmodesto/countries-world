@@ -180,7 +180,7 @@ button#filter {
 /* list-countries */
 .list-countries {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
